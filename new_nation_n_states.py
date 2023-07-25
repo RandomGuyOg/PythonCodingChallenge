@@ -1,7 +1,4 @@
 import pandas as pd
-import itertools
-
-
 def get_max_pop_set(sets_of_states, state_population):
     max_set = []
     max_population = 0
