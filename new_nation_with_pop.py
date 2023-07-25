@@ -1,74 +1,86 @@
-import csv
+import pandas as pd
+#getting raw data here
+
+def get_pop_sets(sets_of_states, min_pop, state_population):
+    print(sets_of_states)
+    pop_sets = []
+    max_population = 0
+    for x in sets_of_states:
+        set_population = 0
+        for state in x:
+            set_population = set_population + state_population.get(state,0)
+        if set_population > min_pop*1e6:
+            pop_sets.append(x)
+    return pop_sets
+def new_nation_with_pop(min_pop, usstates, border_data):
+    us_states = pd.read_csv(usstates, header = None).rename(columns={0:"State",1:"State Code",2:"Area",3:"Population"})
+    border_data = pd.read_csv(border_data)
+    us_states = us_states.drop_duplicates(subset=['State Code'], keep='first')
+    state_translater = dict(zip(us_states['State Code'], us_states['State']))
+    state_population= dict(zip(us_states['State Code'], us_states['Population']))
+    #Getting all borders of a state
+    border_data_border = border_data[["ST1ST2"]]
+    borders_defined = pd.DataFrame()
+    borders_defined["State"] =""
+    borders_defined["border state"] =""
+    n= 0
+    for index, row in border_data_border.iterrows():
+        temp_container = row["ST1ST2"].split("-")
+        if len(temp_container) ==2:
+            borders_defined= pd.concat([borders_defined, pd.DataFrame({"State": [temp_container[0]], "border state" : [temp_container[1]]})])
+            borders_defined = pd.concat(
+                [borders_defined, pd.DataFrame({"State": [temp_container[1]], "border state": [temp_container[0]]})])
+            n= n+2
+
+    borders_defined = borders_defined[borders_defined["State"] != borders_defined["border state"]].reset_index(drop = True)
+    borders_defined = borders_defined.drop_duplicates(subset=['State', 'border state'], keep='first')
+    print(borders_defined)
+    # new dic => state : {population, pd.DataFrame("State", "population") sorted decending order of population}
+    required_state_object = {}
+    for index, row in borders_defined.iterrows():
+        if not row['State'] in required_state_object.keys():
+            required_state_object[row['State']] = [state_population.get(row['State'],0),pd.DataFrame({"State":[row['border state'] ], "population": state_population.get(row['border state'],0),  })]
+        else:
+            #print("adding more data here: ", row['State'])
+            required_state_object[row['State']] [1] = pd.concat([required_state_object[row['State']] [1],
+                                                             pd.DataFrame({"State":[row['border state'] ], "population": [state_population.get(row['border state'],0)] })]).drop_duplicates().sort_values(by='population', ascending=False).reset_index(drop = True)
+            #.drop_duplicates().sort_values(by='population', ascending=False)
+
+    #n= 4
+    #max_population = 0
+
+    number_len = 1
+    required_pop_sets = []
+    while len(required_pop_sets) == 0 and number_len < len(required_state_object.keys()):
+        set_states = []
+        for state in  required_state_object.keys():
+            print(state)
+            prev_step = []
+            new_step = [[state]]
+            number = 0
+            while number < number_len-1:
+                prev_step = new_step.copy()
+                new_step = []
+                for x in prev_step:
+                    print("previosu step is :, ", x)
+                    states_neigbors =  required_state_object[x[-1]][1]["State"].to_list()
+                    for neigbor in states_neigbors:
+                        new_step.append( x+[neigbor])
+                number= number+1
+            new_step = [set(x) for x in new_step if len(set(x))==number_len]
+            set_states = set_states + new_step
+        set_states_distinct = []
+        #set_states_distinct = [x for x in set_states if not x in set_states_distinct]
+        for x in set_states:
+            if not x in set_states_distinct:
+                set_states_distinct.append(x)
+        #print(len(set_states_distinct))
+        required_pop_sets = get_pop_sets(set_states_distinct, min_pop, state_population)
+        number_len = number_len+1
+    return required_pop_sets
 
 
-def load_regions(filename):
-    states_dict = dict()
-
-    with open(filename, 'r') as f:
-        for line in csv.reader(f):
-            states_dict[line[1]] = int(line[3])
-
-    return states_dict
+print(new_nation_with_pop(40, 'usstates.csv', 'border_data.csv'))
 
 
-def load_borders(filename):
-    borders_list = list()
 
-    with open(filename, 'r') as f:
-        for line in csv.reader(f, 1):
-            states = line[1].split('-')
-            if len(states) == 2:
-                borders_list.append((states[0], states[1]))
-
-    return borders_list
-
-
-# This function returns the state and population of the "most populous
-# neighbor" bordering the candidate nation.
-def most_populous_neighbor(states, borders, nation):
-    neighbor = ''
-    pop = 0
-
-    for s in nation:
-        for border in borders:
-            if border[0] == s and border[1] in states:
-                candidate = border[1]
-                candidate_pop = states[border[1]]
-
-                if candidate not in nation and candidate_pop > pop:
-                    neighbor = candidate
-                    pop = candidate_pop
-
-            if border[1] == s and border[0] in states:
-                candidate = border[0]
-                candidate_pop = states[border[0]]
-
-                if candidate not in nation and candidate_pop > pop:
-                    neighbor = candidate
-                    pop = candidate_pop
-
-    return neighbor, pop
-
-
-def new_nation_with_pop(p, region_filename, border_filename):
-    new_nations = []
-    max_pop = 0
-
-    states = load_regions(region_filename)
-    borders = load_borders(border_filename)
-
-    # Our naive implementation arbitrarily starts with the 'first' state
-    # returned by load_states. One easy improvement would be to replace this
-    # with the most populous state, but you can do far better than this!
-    starting_state = list(states.keys())[0]
-    new_nations = [(starting_state,)]
-    max_pop = states[starting_state]
-
-    # This is a "greedy" algorithm - we simply find the most populous
-    # state bordering our candidate nation and append it to the list.
-    while max_pop < p * 10 ** 6:
-        next_st, pop = most_populous_neighbor(states, borders, new_nations[0])
-        new_nations[0] += (next_st,)
-        max_pop += pop
-
-    return new_nations
