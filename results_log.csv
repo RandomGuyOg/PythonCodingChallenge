@@ -1,8 +1,12 @@
-2023-07-28 20:31:16,Rolling Pandas,new_nation_n_states,valid,1,34888000,0.018019873648881912
-2023-07-28 20:31:16,Rolling Pandas,new_nation_n_states,valid,2,39325000,0.01838698238134384
-2023-07-28 20:31:16,Rolling Pandas,new_nation_n_states,valid,3,44362000,0.01981203258037567
-2023-07-28 20:31:16,Rolling Pandas,new_nation_n_states,valid,4,61187000,0.030277516692876816
-2023-07-28 20:31:16,Rolling Pandas,new_nation_n_states,valid,5,66805000,0.10390539467334747
-2023-07-28 20:31:17,Rolling Pandas,new_nation_n_states,valid,6,72263562,0.5579473450779915
-2023-07-28 20:31:20,Rolling Pandas,new_nation_n_states,valid,7,84431562,2.674841709434986
-2023-07-28 20:31:25,Rolling Pandas,new_nation_n_states,timeout,8,,,computation did not complete in 5 seconds or less
+2023-07-28 20:40:11,Rolling Pandas,new_nation_with_pop,valid,30,1,0.019387349486351013
+2023-07-28 20:40:11,Rolling Pandas,new_nation_with_pop,valid,35,2,0.017459068447351456
+2023-07-28 20:40:11,Rolling Pandas,new_nation_with_pop,valid,40,3,0.022087886929512024
+2023-07-28 20:40:11,Rolling Pandas,new_nation_with_pop,valid,45,4,0.04053354263305664
+2023-07-28 20:40:11,Rolling Pandas,new_nation_with_pop,valid,50,4,0.03432997688651085
+2023-07-28 20:40:11,Rolling Pandas,new_nation_with_pop,valid,55,4,0.03439740836620331
+2023-07-28 20:40:12,Rolling Pandas,new_nation_with_pop,valid,60,4,0.03310732915997505
+2023-07-28 20:40:12,Rolling Pandas,new_nation_with_pop,valid,65,5,0.1311301663517952
+2023-07-28 20:40:12,Rolling Pandas,new_nation_with_pop,valid,70,6,0.6651590019464493
+2023-07-28 20:40:16,Rolling Pandas,new_nation_with_pop,valid,75,7,3.7219569124281406
+2023-07-28 20:40:20,Rolling Pandas,new_nation_with_pop,valid,80,7,3.7074106261134148
+2023-07-28 20:40:25,Rolling Pandas,new_nation_with_pop,timeout,85,,,computation did not complete in 5 seconds or less
