@@ -33,21 +33,23 @@ def new_nation_with_pop(min_pop, usstates, border_data):
         set_states = set()
         for state in borders_defined_dict.keys():
             #for state in top_50_pct:
-            new_step = [[state]]
+            new_step = {frozenset([state])}
             number = 0
             while number < number_len - 1:
                 prev_step = new_step.copy()
-                new_step = []
+                new_step = set()
                 for step in prev_step:
-                    states_neighbours = borders_defined_dict[step[-1]]
+                    if len(step) > 1:
+                        states_neighbours = {neighbour for s in step for neighbour in
+                                             borders_defined_dict.get(s, set())}
+                    else:
+                        states_neighbours = borders_defined_dict.get(next(iter(step)), set())
                     for neighbour in states_neighbours:
-                        new_step.append(step + [neighbour])
-                number = number + 1
-            new_step = [frozenset(x) for x in new_step if len(set(x)) == number_len]
-            new_step = set(new_step)
-            set_states = set_states.union(new_step)
-        set_states_distinct = list(set_states)
-        required_pop_sets = get_pop_sets(set_states_distinct, min_pop, state_population)
+                        new_step.add(frozenset(step | {neighbour}))
+                number += 1
+            set_states |= new_step
+        #set_states_distinct = list(set_states)
+        required_pop_sets = get_pop_sets(set_states, min_pop, state_population)
         number_len = number_len + 1
     return required_pop_sets
 
