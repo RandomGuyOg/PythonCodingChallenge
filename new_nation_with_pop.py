@@ -7,12 +7,7 @@ def get_top_50_pct_states(sets_of_states, state_population):
     temp_df = pd.DataFrame({"states_sets": sets_of_states,
                             "pop_sets_sum": pop_sets_sum})
     temp_df = temp_df.sort_values(by='pop_sets_sum', ascending=False)
-    '''if len(temp_df) > 5:
-        cutoff = int(len(temp_df)/2)
-    else:
-        cutoff = len(temp_df)'''
-    cutoff = int(len(temp_df) / 2)
-    pop_sets = set(temp_df["states_sets"].to_list()[:cutoff])
+    pop_sets = set(temp_df["states_sets"].to_list()[:int(len(temp_df)/2)])
     return set(pop_sets)
 def get_pop_sets(sets_of_states, min_pop, state_population):
     pop_sets = [set(state_set) for state_set in sets_of_states if sum(state_population.get(state, 0) for state in state_set) > min_pop * 1e6]
