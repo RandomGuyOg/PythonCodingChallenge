@@ -1,14 +1,9 @@
 import pandas as pd
 
 def get_max_pop_set(sets_of_states, state_population):
-    max_set = []
-    max_population = 0
-    for state_set in sets_of_states:
-        set_population = sum(state_population.get(state, 0) for state in state_set)
-        if set_population > max_population:
-            max_population = set_population
-            max_set = state_set
-    return (max_set, max_population)
+    max_set = max(sets_of_states, key=lambda s: sum(state_population.get(state, 0) for state in s))
+    max_population = sum(state_population.get(state, 0) for state in max_set)
+    return max_set, max_population
 
 def new_nation_n_states(number_len, usstates, border_data):
     us_states = pd.read_csv(usstates, header=None, names=["State", "State Code", "Area", "Population"])
@@ -33,10 +28,10 @@ def new_nation_n_states(number_len, usstates, border_data):
             prev_step = new_step.copy()
             new_step = set()
             for step in prev_step:
-                if len(step) > 1:
-                    states_neighbours = {neighbour for s in step for neighbour in borders_defined_dict.get(s, set())}
-                else:
-                    states_neighbours = borders_defined_dict.get(next(iter(step)), set())
+                #if len(step) > 1:
+                states_neighbours = {neighbour for s in step for neighbour in borders_defined_dict.get(s, set())}
+                #else:
+                    #states_neighbours = borders_defined_dict.get(next(iter(step)), set())
                 for neighbour in states_neighbours:
                     new_step.add(frozenset(step | {neighbour}))
             number += 1
@@ -45,5 +40,5 @@ def new_nation_n_states(number_len, usstates, border_data):
 
     return get_max_pop_set(set_states, state_population)
 
-#result = new_nation_n_states(8, 'usstates.csv', 'border_data.csv')
-#print(result)
+result = new_nation_n_states(7, 'usstates.csv', 'border_data.csv')
+print(result)
