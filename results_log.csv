@@ -1,12 +1,12 @@
-2023-07-28 20:19:12,Rolling Pandas,new_nation_with_pop,valid,30,1,0.01913422718644142
-2023-07-28 20:19:12,Rolling Pandas,new_nation_with_pop,valid,35,2,0.018235646188259125
-2023-07-28 20:19:12,Rolling Pandas,new_nation_with_pop,valid,40,3,0.019732993096113205
-2023-07-28 20:19:12,Rolling Pandas,new_nation_with_pop,valid,45,4,0.03444617986679077
-2023-07-28 20:19:12,Rolling Pandas,new_nation_with_pop,valid,50,4,0.03270946443080902
-2023-07-28 20:19:12,Rolling Pandas,new_nation_with_pop,valid,55,4,0.03289513662457466
-2023-07-28 20:19:12,Rolling Pandas,new_nation_with_pop,valid,60,4,0.03249005228281021
-2023-07-28 20:19:12,Rolling Pandas,new_nation_with_pop,valid,65,5,0.11508660763502121
-2023-07-28 20:19:13,Rolling Pandas,new_nation_with_pop,valid,70,6,0.6556224748492241
-2023-07-28 20:19:17,Rolling Pandas,new_nation_with_pop,valid,75,7,3.804681319743395
-2023-07-28 20:19:21,Rolling Pandas,new_nation_with_pop,valid,80,7,3.924505092203617
-2023-07-28 20:19:26,Rolling Pandas,new_nation_with_pop,timeout,85,,,computation did not complete in 5 seconds or less
+2023-07-28 20:20:10,Rolling Pandas,new_nation_with_pop,valid,30,1,0.02033158764243126
+2023-07-28 20:20:10,Rolling Pandas,new_nation_with_pop,valid,35,2,0.01769408956170082
+2023-07-28 20:20:10,Rolling Pandas,new_nation_with_pop,valid,40,3,0.019267167896032333
+2023-07-28 20:20:10,Rolling Pandas,new_nation_with_pop,valid,45,4,0.0327446274459362
+2023-07-28 20:20:10,Rolling Pandas,new_nation_with_pop,valid,50,4,0.04020995274186134
+2023-07-28 20:20:10,Rolling Pandas,new_nation_with_pop,valid,55,4,0.03320328891277313
+2023-07-28 20:20:10,Rolling Pandas,new_nation_with_pop,valid,60,4,0.03342169150710106
+2023-07-28 20:20:10,Rolling Pandas,new_nation_with_pop,valid,65,5,0.1194724552333355
+2023-07-28 20:20:11,Rolling Pandas,new_nation_with_pop,valid,70,6,0.7372481152415276
+2023-07-28 20:20:15,Rolling Pandas,new_nation_with_pop,valid,75,7,3.8913157619535923
+2023-07-28 20:20:18,Rolling Pandas,new_nation_with_pop,valid,80,7,3.5384344421327114
+2023-07-28 20:20:23,Rolling Pandas,new_nation_with_pop,timeout,85,,,computation did not complete in 5 seconds or less
