@@ -1,1 +1,12 @@
-2023-07-29 10:30:14,Rolling Pandas,new_nation_with_pop,error,,,,exception: we could not load your function in 5 seconds or less
+2023-07-29 10:32:10,Rolling Pandas,new_nation_with_pop,valid,30,1,0.019200686365365982
+2023-07-29 10:32:10,Rolling Pandas,new_nation_with_pop,valid,35,2,0.016762960702180862
+2023-07-29 10:32:10,Rolling Pandas,new_nation_with_pop,valid,40,3,0.018751326948404312
+2023-07-29 10:32:10,Rolling Pandas,new_nation_with_pop,valid,45,4,0.03089350089430809
+2023-07-29 10:32:10,Rolling Pandas,new_nation_with_pop,valid,50,4,0.03372736647725105
+2023-07-29 10:32:10,Rolling Pandas,new_nation_with_pop,valid,55,4,0.034950435161590576
+2023-07-29 10:32:10,Rolling Pandas,new_nation_with_pop,valid,60,4,0.03311645984649658
+2023-07-29 10:32:10,Rolling Pandas,new_nation_with_pop,valid,65,5,0.12562840059399605
+2023-07-29 10:32:11,Rolling Pandas,new_nation_with_pop,valid,70,6,0.6792027652263641
+2023-07-29 10:32:14,Rolling Pandas,new_nation_with_pop,valid,75,7,3.830672387033701
+2023-07-29 10:32:18,Rolling Pandas,new_nation_with_pop,valid,80,7,3.7671490870416164
+2023-07-29 10:32:23,Rolling Pandas,new_nation_with_pop,timeout,85,,,computation did not complete in 5 seconds or less
