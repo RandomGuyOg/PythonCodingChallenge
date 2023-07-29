@@ -7,10 +7,11 @@ def get_top_50_pct_states(sets_of_states, state_population):
     temp_df = pd.DataFrame({"states_sets": sets_of_states,
                             "pop_sets_sum": pop_sets_sum})
     temp_df = temp_df.sort_values(by='pop_sets_sum', ascending=False)
-    if len(temp_df) > 5:
+    '''if len(temp_df) > 5:
         cutoff = int(len(temp_df)/2)
     else:
-        cutoff = len(temp_df)
+        cutoff = len(temp_df)'''
+    cutoff = int(len(temp_df) / 2)
     pop_sets = set(temp_df["states_sets"].to_list()[:cutoff])
     return set(pop_sets)
 def get_pop_sets(sets_of_states, min_pop, state_population):
@@ -63,5 +64,5 @@ def new_nation_with_pop(min_pop, usstates, border_data):
         number_len = number_len + 1
     return required_pop_sets
 
-#result = new_nation_with_pop(80, 'usstates.csv', 'border_data.csv')
-#print(result)
+result = new_nation_with_pop(85, 'usstates.csv', 'border_data.csv')
+print(result)
