@@ -1,5 +1,18 @@
 import pandas as pd
 
+
+def get_top_50_pct_states(sets_of_states, state_population):
+    sets_of_states = list(sets_of_states)
+    pop_sets_sum = [sum(state_population.get(state, 0) for state in state_set) for state_set in sets_of_states]
+    temp_df = pd.DataFrame({"states_sets": sets_of_states,
+                            "pop_sets_sum": pop_sets_sum})
+    temp_df = temp_df.sort_values(by='pop_sets_sum', ascending=False)
+    if len(temp_df) > 5:
+        cutoff = int(len(temp_df)/2)
+    else:
+        cutoff = len(temp_df)
+    pop_sets = set(temp_df["states_sets"].to_list()[:cutoff])
+    return set(pop_sets)
 def get_pop_sets(sets_of_states, min_pop, state_population):
     pop_sets = [set(state_set) for state_set in sets_of_states if sum(state_population.get(state, 0) for state in state_set) > min_pop * 1e6]
     return pop_sets
@@ -42,6 +55,7 @@ def new_nation_with_pop(min_pop, usstates, border_data):
                         states_neighbours = borders_defined_dict.get(next(iter(step)), set())
                     for neighbour in states_neighbours:
                         new_step.add(frozenset(step | {neighbour}))
+                    new_step = get_top_50_pct_states(new_step, state_population)
                 number += 1
             set_states |= new_step
         #set_states_distinct = list(set_states)
