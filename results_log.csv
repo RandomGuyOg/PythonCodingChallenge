@@ -1,12 +1,16 @@
-2023-07-28 20:40:11,Rolling Pandas,new_nation_with_pop,valid,30,1,0.019387349486351013
-2023-07-28 20:40:11,Rolling Pandas,new_nation_with_pop,valid,35,2,0.017459068447351456
-2023-07-28 20:40:11,Rolling Pandas,new_nation_with_pop,valid,40,3,0.022087886929512024
-2023-07-28 20:40:11,Rolling Pandas,new_nation_with_pop,valid,45,4,0.04053354263305664
-2023-07-28 20:40:11,Rolling Pandas,new_nation_with_pop,valid,50,4,0.03432997688651085
-2023-07-28 20:40:11,Rolling Pandas,new_nation_with_pop,valid,55,4,0.03439740836620331
-2023-07-28 20:40:12,Rolling Pandas,new_nation_with_pop,valid,60,4,0.03310732915997505
-2023-07-28 20:40:12,Rolling Pandas,new_nation_with_pop,valid,65,5,0.1311301663517952
-2023-07-28 20:40:12,Rolling Pandas,new_nation_with_pop,valid,70,6,0.6651590019464493
-2023-07-28 20:40:16,Rolling Pandas,new_nation_with_pop,valid,75,7,3.7219569124281406
-2023-07-28 20:40:20,Rolling Pandas,new_nation_with_pop,valid,80,7,3.7074106261134148
-2023-07-28 20:40:25,Rolling Pandas,new_nation_with_pop,timeout,85,,,computation did not complete in 5 seconds or less
+2023-07-29 09:55:11,Rolling Pandas,new_nation_n_states,valid,1,34888000,0.023822516202926636
+2023-07-29 09:55:11,Rolling Pandas,new_nation_n_states,valid,2,39325000,0.07867053151130676
+2023-07-29 09:55:11,Rolling Pandas,new_nation_n_states,valid,3,44362000,0.1729622185230255
+2023-07-29 09:55:11,Rolling Pandas,new_nation_n_states,valid,4,61187000,0.36492668837308884
+2023-07-29 09:55:12,Rolling Pandas,new_nation_n_states,valid,5,66805000,0.6274771094322205
+2023-07-29 09:55:13,Rolling Pandas,new_nation_n_states,valid,6,72263562,0.8850034698843956
+2023-07-29 09:55:14,Rolling Pandas,new_nation_n_states,valid,7,84431562,1.3313111886382103
+2023-07-29 09:55:16,Rolling Pandas,new_nation_n_states,valid,8,92253000,1.748444676399231
+2023-07-29 09:55:18,Rolling Pandas,new_nation_n_states,valid,9,101929562,2.2709642611443996
+2023-07-29 09:55:20,Rolling Pandas,new_nation_n_states,valid,10,118238562,2.2349889241158962
+2023-07-29 09:55:23,Rolling Pandas,new_nation_n_states,valid,11,132462562,2.649837624281645
+2023-07-29 09:55:26,Rolling Pandas,new_nation_n_states,valid,12,142221562,3.200850147753954
+2023-07-29 09:55:31,Rolling Pandas,new_nation_n_states,valid,13,150356562,4.214826229959726
+2023-07-29 09:55:35,Rolling Pandas,new_nation_n_states,valid,14,156306562,4.923659138381481
+2023-07-29 09:55:40,Rolling Pandas,new_nation_n_states,valid,15,170709562,4.908131700009108
+2023-07-29 09:55:45,Rolling Pandas,new_nation_n_states,timeout,16,,,computation did not complete in 5 seconds or less
