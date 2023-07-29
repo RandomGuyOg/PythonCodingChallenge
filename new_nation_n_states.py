@@ -36,7 +36,10 @@ def new_nation_n_states(number_len, usstates, border_data):
             prev_step = new_step.copy()
             new_step = set()
             for step in prev_step:
+                #if len(step) > 1:
                 states_neighbours = {neighbour for s in step for neighbour in borders_defined_dict.get(s, set())}
+                #else:
+                    #states_neighbours = borders_defined_dict.get(next(iter(step)), set())
                 for neighbour in states_neighbours:
                     new_step.add(frozenset(step | {neighbour}))
                 new_step = get_top_50_pct_states(new_step, state_population)
