@@ -1,11 +1,7 @@
 import pandas as pd
 
 def get_pop_sets(sets_of_states, min_pop, state_population):
-    pop_sets = []
-    for state_set in sets_of_states:
-        set_population = sum(state_population.get(state, 0) for state in state_set)
-        if set_population > min_pop*1e6:
-            pop_sets.append(set(state_set))
+    pop_sets = [set(state_set) for state_set in sets_of_states if sum(state_population.get(state, 0) for state in state_set) > min_pop * 1e6]
     return pop_sets
 
 
@@ -53,5 +49,5 @@ def new_nation_with_pop(min_pop, usstates, border_data):
         number_len = number_len + 1
     return required_pop_sets
 
-#result = new_nation_with_pop(40, 'usstates.csv', 'border_data.csv')
+#result = new_nation_with_pop(80, 'usstates.csv', 'border_data.csv')
 #print(result)
