@@ -52,5 +52,5 @@ def new_nation_with_pop(min_pop, usstates, border_data):
         number_len = number_len + 1
     return required_pop_sets
 
-result = new_nation_with_pop(85, 'usstates.csv', 'border_data.csv')
-print(result)
+#result = new_nation_with_pop(85, 'usstates.csv', 'border_data.csv')
+#print(result)
