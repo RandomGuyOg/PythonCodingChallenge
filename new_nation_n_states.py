@@ -1,13 +1,13 @@
 import pandas as pd
+import numpy as np
 
 def get_top_50_pct_states(sets_of_states, state_population):
     sets_of_states = list(sets_of_states)
-    pop_sets_sum = [sum(state_population.get(state, 0) for state in state_set) for state_set in sets_of_states]
-    temp_df = pd.DataFrame({"states_sets": sets_of_states,
-                            "pop_sets_sum": pop_sets_sum})
-    temp_df = temp_df.sort_values(by='pop_sets_sum', ascending=False)
-    pop_sets = set(temp_df["states_sets"].to_list()[:int(len(temp_df)/2)])
-    return set(pop_sets)
+    pop_sets_sum = np.array([sum(state_population.get(state, 0) for state in state_set) for state_set in sets_of_states])
+    sorted_indices = np.argsort(pop_sets_sum)[::-1]
+    top_50_pct_indices = sorted_indices[:len(sorted_indices)//2]
+    top_50_pct_states = set([sets_of_states[i] for i in top_50_pct_indices])
+    return top_50_pct_states
 def get_max_pop_set(sets_of_states, state_population):
     max_set = max(sets_of_states, key=lambda s: sum(state_population.get(state, 0) for state in s))
     max_population = sum(state_population.get(state, 0) for state in max_set)
@@ -49,5 +49,5 @@ def new_nation_n_states(number_len, usstates, border_data):
 
     return get_max_pop_set(set_states, state_population)
 
-#result = new_nation_n_states(7, 'usstates.csv', 'border_data.csv')
+#result = new_nation_n_states(15, 'usstates.csv', 'border_data.csv')
 #print(result)
