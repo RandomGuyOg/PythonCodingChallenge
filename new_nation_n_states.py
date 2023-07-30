@@ -49,5 +49,5 @@ def new_nation_n_states(number_len, usstates, border_data):
 
     return get_max_pop_set(set_states, state_population)
 
-#result = new_nation_n_states(15, 'usstates.csv', 'border_data.csv')
+#result = new_nation_n_states(13, 'usstates.csv', 'border_data.csv')
 #print(result)
