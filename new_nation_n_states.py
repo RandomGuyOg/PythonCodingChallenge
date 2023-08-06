@@ -5,7 +5,7 @@ def get_top_n_pct_states(sets_of_states, state_population):
     sets_of_states = list(sets_of_states)
     pop_sets_sum = np.array([sum(state_population.get(state, 0) for state in state_set) for state_set in sets_of_states])
     sorted_indices = np.argsort(pop_sets_sum)[::-1]
-    top_50_pct_indices = sorted_indices[:len(sorted_indices)//2.5]
+    top_50_pct_indices = sorted_indices[:int(len(sorted_indices)//2.5)]
     top_50_pct_states = set([sets_of_states[i] for i in top_50_pct_indices])
     return top_50_pct_states
 def get_max_pop_set(sets_of_states, state_population):
