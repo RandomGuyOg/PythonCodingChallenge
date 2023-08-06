@@ -51,3 +51,4 @@ def new_nation_n_states(number_len, usstates, border_data):
 
 #result = new_nation_n_states(13, 'usstates.csv', 'border_data.csv')
 #print(result)
+print("Arigato")
