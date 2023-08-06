@@ -1,11 +1,11 @@
 import pandas as pd
 import numpy as np
 
-def get_top_50_pct_states(sets_of_states, state_population):
+def get_top_n_pct_states(sets_of_states, state_population):
     sets_of_states = list(sets_of_states)
     pop_sets_sum = np.array([sum(state_population.get(state, 0) for state in state_set) for state_set in sets_of_states])
     sorted_indices = np.argsort(pop_sets_sum)[::-1]
-    top_50_pct_indices = sorted_indices[:len(sorted_indices)//2]
+    top_50_pct_indices = sorted_indices[:len(sorted_indices)//3]
     top_50_pct_states = set([sets_of_states[i] for i in top_50_pct_indices])
     return top_50_pct_states
 def get_max_pop_set(sets_of_states, state_population):
@@ -42,7 +42,7 @@ def new_nation_n_states(number_len, usstates, border_data):
                     #states_neighbours = borders_defined_dict.get(next(iter(step)), set())
                 for neighbour in states_neighbours:
                     new_step.add(frozenset(step | {neighbour}))
-                new_step = get_top_50_pct_states(new_step, state_population)
+                new_step = get_top_n_pct_states(new_step, state_population)
             number += 1
         set_states |= new_step
     #set_states_distinct = list(set_states)
