@@ -1,4 +1,4 @@
-This code defines a set of functions and a main function, `new_nation_n_states`, aimed at finding the most populous "new nation" carved out from a specified number of US states. Let's break down the code step by step:
+This code defines functions and a main function, `new_nation_n_states`, aimed at identifying the most populous "new nation" carved out from a specified number of US states. Let's dissect the code:
 
 1. **Importing Libraries**:
    - The code imports the Pandas library as `pd` and the NumPy library as `np`. These libraries are commonly used for data manipulation and numerical computations in Python.
@@ -14,7 +14,6 @@ This code defines a set of functions and a main function, `new_nation_n_states`,
    - It iteratively constructs state sets by combining neighboring states until the desired number of states is reached (`number_len`).
    - It utilizes the `get_top_n_pct_states` function to filter out the top 50% of state sets based on population.
    - Finally, it returns the state set with the maximum population and its corresponding population using the `get_max_pop_set` function.
-
 
 
 Overall, this code aims to find the most populous "new nation" carved out from a specified number of US states by leveraging state population and border data. It employs a systematic approach to construct and evaluate potential state combinations, ultimately identifying the optimal solution based on population criteria.
